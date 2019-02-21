@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { SIGNUP } from '../constants/routes'
+import { Link, withRouter } from 'react-router-dom';
+import * as ROUTES from '../constants/routes'
+import { withFirebase } from '../firebase';
 
 const LoginPage = () => (
   <div>
     <h1>Login</h1>
     <LoginForm />
     <div>
-      <p>Don't have an account? <Link to={SIGNUP}>Sign Up</Link></p>
+      <p>Don't have an account? <Link to={ROUTES.SIGNUP}>Sign Up</Link></p>
     </div>
   </div >
 )
@@ -15,17 +16,26 @@ const LoginPage = () => (
 const INITIAL_STATE = {
   email: '',
   password: '',
-  error: ''
+  error: null
 }
 
-class LoginForm extends Component {
+class LoginFormBase extends Component {
 
   state = {
     ...INITIAL_STATE
   }
 
   handleSubmit = (e) => {
+    e.preventDefault()
 
+    const { email, password } = this.state
+
+    this.props.firebase.handleLogin(email, password)
+      .then(() => {
+        this.setState({ ...INITIAL_STATE })
+        this.props.history.push(ROUTES.HOME)
+      })
+      .catch(error => this.setState({ error }))
   }
 
   handleChange = (e) => {
@@ -33,7 +43,9 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { email, password } = this.state
+    const { email, password, error } = this.state
+
+    const isInvalid = password === '' || email === ''
 
     return (
       <form onSubmit={this.handleSubmit} >
@@ -50,10 +62,13 @@ class LoginForm extends Component {
           placeholder='Password'
           value={password}
         />
-        <button type='submit'>Login</button>
+        <button disabled={isInvalid} type='submit'>Login</button>
+        {error && <p>{error.message}</p>}
       </form >
     )
   }
 }
+
+const LoginForm = withRouter(withFirebase(LoginFormBase))
 
 export default LoginPage;
