@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
+import { withFirebase } from '../firebase'
+import * as ROUTES from '../constants/routes'
 
-import { FirebaseContext } from '../firebase'
+const SignUpPage = () => (
+  <div>
+    <h1>Sign Up</h1>
+    <SignUpForm />
+  </div>
+)
 
 const INITIAL_STATE = {
   username: '',
@@ -10,16 +18,7 @@ const INITIAL_STATE = {
   error: ''
 }
 
-const SignUpPage = () => (
-  <div>
-    <h1>Sign Up</h1>
-    <FirebaseContext.Consumer>
-      {firebase => <SignUpForm firebase={firebase} />}
-    </FirebaseContext.Consumer>
-  </div>
-)
-
-class SignUpForm extends Component {
+class SignUpFormBase extends Component {
 
   state = {
     ...INITIAL_STATE
@@ -30,7 +29,12 @@ class SignUpForm extends Component {
 
     const { username, email, passwordOne } = this.state
 
-
+    this.props.firebase.handleSignUp(email, passwordOne)
+      .then(authUser => {
+        this.setState({ ...INITIAL_STATE })
+        this.props.history.push(ROUTES.HOME)
+      })
+      .catch(error => this.setState({ error }))
   }
 
   handleChange = (e) => {
@@ -89,5 +93,7 @@ class SignUpForm extends Component {
     );
   }
 };
+
+const SignUpForm = withRouter(withFirebase(SignUpFormBase))
 
 export default SignUpPage;
