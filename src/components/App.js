@@ -6,7 +6,7 @@ import Nav from './Nav';
 import Landing from './Landing';
 import Home from './Home';
 import Login from './Login';
-import Signup from './Signup';
+import SignUp from './SignUp';
 import Account from './Account';
 
 const App = () => (
@@ -18,7 +18,7 @@ const App = () => (
         <Route exact path={ROUTES.LANDING} component={Landing} />
         <Route path={ROUTES.HOME} component={Home} />
         <Route path={ROUTES.LOGIN} component={Login} />
-        <Route path={ROUTES.SIGNUP} component={Signup} />
+        <Route path={ROUTES.SIGNUP} component={SignUp} />
         <Route path={ROUTES.ACCOUNT} component={Account} />
       </div>
     </Router>
