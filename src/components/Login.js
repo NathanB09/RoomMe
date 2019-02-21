@@ -2,11 +2,26 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { SIGNUP } from '../constants/routes'
 
-class Login extends Component {
+const LoginPage = () => (
+  <div>
+    <h1>Login</h1>
+    <LoginForm />
+    <div>
+      <p>Don't have an account? <Link to={SIGNUP}>Sign Up</Link></p>
+    </div>
+  </div >
+)
+
+const INITIAL_STATE = {
+  email: '',
+  password: '',
+  error: ''
+}
+
+class LoginForm extends Component {
 
   state = {
-    email: '',
-    password: ''
+    ...INITIAL_STATE
   }
 
   handleSubmit = (e) => {
@@ -21,30 +36,24 @@ class Login extends Component {
     const { email, password } = this.state
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            onChange={this.handleChange}
-            type="text"
-            name='email'
-            placeholder='Email' value={email}
-          />
-          <input
-            onChange={this.handleChange}
-            type="password"
-            name='password'
-            placeholder='Password'
-            value={password}
-          />
-          <button type='submit'>Login</button>
-        </form>
-
-        <div>
-          <p>Don't have an account? <Link to={SIGNUP}>Sign Up</Link></p>
-        </div>
-      </div>
+      <form onSubmit={this.handleSubmit} >
+        <input
+          onChange={this.handleChange}
+          type="text"
+          name='email'
+          placeholder='Email' value={email}
+        />
+        <input
+          onChange={this.handleChange}
+          type="password"
+          name='password'
+          placeholder='Password'
+          value={password}
+        />
+        <button type='submit'>Login</button>
+      </form >
     )
   }
 }
 
-export default Login;
+export default LoginPage;
