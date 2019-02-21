@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
-  error: ''
+  error: null
 }
 
 class SignUpFormBase extends Component {
@@ -27,7 +27,7 @@ class SignUpFormBase extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const { username, email, passwordOne } = this.state
+    const { email, passwordOne } = this.state
 
     this.props.firebase.handleSignUp(email, passwordOne)
       .then(authUser => {
