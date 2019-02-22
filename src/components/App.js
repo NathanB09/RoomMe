@@ -8,6 +8,7 @@ import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
 import Account from './Account';
+import { withAuthentication } from '../session';
 
 const App = () => (
   <div className="App">
@@ -25,4 +26,4 @@ const App = () => (
   </div>
 )
 
-export default App;
+export default withAuthentication(App);
