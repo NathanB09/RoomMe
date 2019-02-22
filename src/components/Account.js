@@ -1,11 +1,14 @@
 import React from 'react';
+import { withAuthorization } from '../session';
 
 const Account = () => {
   return (
     <div>
-      in account
+      <h1>Account</h1>
     </div>
   );
 };
 
-export default Account;
+const condition = authUser => !!authUser
+
+export default withAuthorization(condition)(Account);
