@@ -7,23 +7,29 @@ import Landing from './Landing';
 import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
-import Account from './Account';
+import Profile from './Profile';
 import { withAuthentication } from '../session';
+import EditProfile from './EditProfile';
 
-const App = () => (
-  <div className="App">
-    <Router>
-      <div>
-        <Nav />
+const App = () => {
+  return (
+    <div className="App">
+      <Router>
+        <div>
+          <Nav />
 
-        <Route exact path={ROUTES.LANDING} component={Landing} />
-        <Route path={ROUTES.HOME} component={Home} />
-        <Route path={ROUTES.LOGIN} component={Login} />
-        <Route path={ROUTES.SIGNUP} component={SignUp} />
-        <Route path={ROUTES.ACCOUNT} component={Account} />
-      </div>
-    </Router>
-  </div>
-)
+          <Route exact path={ROUTES.LANDING} component={Landing} />
+          <Route path={ROUTES.HOME} component={Home} />
+          <Route path={ROUTES.LOGIN} component={Login} />
+          <Route path={ROUTES.SIGNUP} component={SignUp} />
+          <Route path={ROUTES.PROFILE} component={Profile} />
+          <Route path={ROUTES.EDIT_PROFILE} component={EditProfile} />
+        </div>
+      </Router>
+    </div>
+  )
+}
+
+
 
 export default withAuthentication(App);

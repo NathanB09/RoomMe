@@ -24,7 +24,7 @@ const NavAuthorized = () => (
   <ul>
     <li><Link to={ROUTES.LANDING}>RoomMe</Link></li>
     <li><Link to={ROUTES.HOME}>Home</Link></li>
-    <li><Link to={ROUTES.ACCOUNT}>Account</Link></li>
+    <li><Link to={ROUTES.PROFILE}>Profile</Link></li>
     <li><LogoutBtn /></li>
   </ul>
 )
