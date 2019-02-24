@@ -1,5 +1,7 @@
 import app from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/database'
+import 'firebase/storage'
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -15,10 +17,11 @@ class Firebase {
     app.initializeApp(config)
 
     this.auth = app.auth()
+    this.db = app.database()
+    this.store = app.storage()
   }
 
-  // Auth functions
-
+  // Auth API
   handleSignUp = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password)
 
@@ -26,6 +29,15 @@ class Firebase {
     this.auth.signInWithEmailAndPassword(email, password)
 
   handleSignOut = () => this.auth.signOut()
+
+  // User API
+  user = uid => this.db.ref(`users/${uid}`)
+
+  users = () => this.db.ref('users')
+
+  // Storage API
+  upload = (file, name, metadata) => this.store.ref().child(name).put(file, metadata)
+
 }
 
 export default Firebase
