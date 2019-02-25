@@ -1,7 +1,13 @@
 class API {
   static init() {
-    const apiKey = process.env.REACT_APP_ZOOPLA_API_KEY
-    const baseURL = `http://api.zoopla.co.uk/api/v1/property_listings.json?api_key=${apiKey}&area=London&listing_status=rent&maximum_price=200&minimum_beds=2`
+    const proxyurl = "https://cors-anywhere.herokuapp.com/"
+    this.baseURL = proxyurl + 'https://api.nestoria.co.uk/api?encoding=json&action=search_listings&country=uk&listing_type=rent&place_name=london&bedroom_min=2&bathroom_min=1&number_of_results=10'
+    this.budgetURL = (min, max) => `${this.baseURL}&price_min=${min}&price_max=${max}`
+  }
+
+  static testCall(num) {
+    return fetch(this.budgetURL(600, 700) + `&page=${num}`)
+      .then(resp => resp.json())
   }
 }
 
