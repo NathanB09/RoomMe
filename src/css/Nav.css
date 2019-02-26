@@ -1,0 +1,39 @@
+ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #2D2D2D;
+  position: sticky;
+  top: 0;
+  height: 8vh;
+  width: 100%;
+  align-items: center;
+}
+
+li .nav_link {
+  text-decoration: none;
+  color: #599CFF;
+  margin-left: 25px;
+}
+
+ul .logo {
+  margin-top: 10px;
+  margin-left: 100px;
+  margin-right: auto;
+}
+
+button.nav_btn {
+  border-radius: 15px;
+  border-width: 0;
+  height: 30px;
+  width: 80px;
+  outline: none;
+  background-color: #599CFF;
+  color: #2D2D2D;
+  cursor: pointer;
+  box-shadow: 0 5px 20px #242424;
+  margin-left: 25px;
+  margin-right: 100px;
+}

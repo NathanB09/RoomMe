@@ -3,29 +3,40 @@ import { Link } from 'react-router-dom';
 import * as ROUTES from '../constants/routes'
 import LogoutBtn from './LogoutBtn';
 import { AuthUserContext } from '../session';
+import '../css/Nav.css'
 
 const Nav = () => (
-  <div>
-    <AuthUserContext.Consumer>
-      {authUser => authUser ? <NavAuthorized /> : <NavUnauthorized />}
-    </AuthUserContext.Consumer>
-  </div>
+  <AuthUserContext.Consumer>
+    {authUser => authUser ? <NavAuthorized /> : <NavUnauthorized />}
+  </AuthUserContext.Consumer>
 )
 
 const NavUnauthorized = () => (
   <ul>
-    <li><Link to={ROUTES.LANDING}>RoomMe</Link></li>
-    <li><Link to={ROUTES.LOGIN}>Login</Link></li>
-    <li><Link to={ROUTES.SIGNUP}><button>Sign Up</button></Link></li>
+    <li className="logo">
+      <Link to={ROUTES.LANDING}>
+        <img src="./nav_logo.svg" alt="nav logo" />
+      </Link>
+    </li>
+    <li><Link className="nav_link" to={ROUTES.LOGIN}>Login</Link></li>
+    <li>
+      <Link className="nav_link" to={ROUTES.SIGNUP}>
+        <button className="nav_btn">Sign Up</button>
+      </Link>
+    </li>
   </ul>
 )
 
 const NavAuthorized = () => (
   <ul>
-    <li><Link to={ROUTES.LANDING}>RoomMe</Link></li>
-    <li><Link to={ROUTES.PROPERTIES}>Properties</Link></li>
-    <li><Link to={ROUTES.ROOMIES}>Roomies</Link></li>
-    <li><Link to={ROUTES.PROFILE}>Profile</Link></li>
+    <li className="logo">
+      <Link to={ROUTES.LANDING}>
+        <img src="./nav_logo.svg" alt="nav logo" />
+      </Link>
+    </li>
+    <li><Link className="nav_link" to={ROUTES.PROPERTIES}>Properties</Link></li>
+    <li><Link className="nav_link" to={ROUTES.ROOMIES}>Roomies</Link></li>
+    <li><Link className="nav_link" to={ROUTES.PROFILE}>Profile</Link></li>
     <li><LogoutBtn /></li>
   </ul>
 )
