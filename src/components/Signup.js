@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { withFirebase } from '../firebase'
 import * as ROUTES from '../constants/routes'
+import '../css/LoginSignup.css'
 
 const SignUpPage = () => (
-  <div>
-    <h1>Sign Up</h1>
-    <SignUpForm />
-  </div>
+  <div className="page_wrapper">
+    <div className="form">
+      <h1>Sign Up</h1>
+      <SignUpForm />
+      <div>
+        <p>Already have an account? <Link to={ROUTES.LOGIN}>Login</Link></p>
+      </div>
+    </div>
+    <div>
+      <img src="./landing_logo.svg" alt="roomie logo" />
+    </div>
+  </div >
 )
 
 const INITIAL_STATE = {
@@ -69,28 +78,28 @@ class SignUpFormBase extends Component {
           name="username"
           placeholder="Username"
           value={username}
-        />
+        /><br/>
         <input
           onChange={this.handleChange}
           type="text"
           name="email"
           placeholder="Email"
           value={email}
-        />
+        /><br/>
         <input
           onChange={this.handleChange}
           type="password"
           name="passwordOne"
           placeholder="Password"
           value={passwordOne}
-        />
+        /><br/>
         <input
           onChange={this.handleChange}
           type="password"
           name="passwordTwo"
           placeholder="Confirm Password"
           value={passwordTwo}
-        />
+        /><br/>
         <button disabled={isInvalid} type='submit'>Sign Up</button>
 
         {error && <p>{error.message}</p>}
