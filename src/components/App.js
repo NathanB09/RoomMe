@@ -10,9 +10,8 @@ import SignUp from './SignUp';
 import Profile from './Profile';
 import { withAuthentication } from '../session';
 import EditProfile from './EditProfile';
-import API from '../constants/API';
 import PropertyList from './PropertyList';
-import Roomies from './Roomies';
+import RoomieList from './RoomieList';
 
 const App = () => {
   return (
@@ -28,7 +27,7 @@ const App = () => {
           <Route path={ROUTES.PROFILE} component={Profile} />
           <Route path={ROUTES.EDIT_PROFILE} component={EditProfile} />
           <Route path={ROUTES.PROPERTIES} component={PropertyList} />
-          <Route path={ROUTES.ROOMIES} component={Roomies} />
+          <Route path={ROUTES.ROOMIES} component={RoomieList} />
         </div>
       </Router>
     </div>
