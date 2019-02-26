@@ -5,8 +5,8 @@ class API {
     this.budgetURL = (min, max) => `${this.baseURL}&price_min=${min}&price_max=${max}`
   }
 
-  static testCall(num) {
-    return fetch(this.budgetURL(600, 700) + `&page=${num}`)
+  static getProperties(budgetMin, budgetMax, num) {
+    return fetch(this.budgetURL(budgetMin, budgetMax) + `&page=${num}`)
       .then(resp => resp.json())
   }
 }
