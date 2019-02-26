@@ -16,23 +16,29 @@ class PropertyList extends React.Component {
     this.props.firebase.users().on('value', snapshot => {
       this.setState({ currentUser: snapshot.val()[userId] })
       const { currentUser, pageNo } = this.state
-      API.getProperties(currentUser.budgetMin, currentUser.budgetMax, pageNo)
-        .then(data => this.setState({ properties: data }))
+      this.userProperties(currentUser, pageNo)
     })
+  }
+
+  componentWillUnmount() {
+    this.props.firebase.users().off()
+  }
+
+  userProperties = async (user, pageNo) => {
+    await API.getProperties(user.budgetMin, user.budgetMax, pageNo)
+      .then(data => this.setState({ properties: data }))
   }
 
   nextPage = async () => {
     await this.setState({ pageNo: this.state.pageNo + 1 })
     const { currentUser, pageNo } = this.state
-    API.getProperties(currentUser.budgetMin, currentUser.budgetMax, pageNo)
-      .then(data => this.setState({ properties: data }))
+    this.userProperties(currentUser, pageNo)
   }
 
   prevPage = async () => {
     await this.setState({ pageNo: this.state.pageNo - 1 })
     const { currentUser, pageNo } = this.state
-    API.getProperties(currentUser.budgetMin, currentUser.budgetMax, pageNo)
-      .then(data => this.setState({ properties: data }))
+    this.userProperties(currentUser, pageNo)
   }
 
   render() {
