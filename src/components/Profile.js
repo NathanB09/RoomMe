@@ -29,11 +29,6 @@ class Profile extends Component {
       }))
   }
 
-  componentWillUnmount() {
-    const user = this.props.firebase.auth.currentUser
-    this.props.firebase.user(user.uid).off()
-  }
-
 
   render() {
     const { username,
