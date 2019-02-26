@@ -16,7 +16,7 @@ const NavUnauthorized = () => (
   <ul>
     <li><Link to={ROUTES.LANDING}>RoomMe</Link></li>
     <li><Link to={ROUTES.LOGIN}>Login</Link></li>
-    <li><Link to={ROUTES.SIGNUP}>Sign Up</Link></li>
+    <li><Link to={ROUTES.SIGNUP}><button>Sign Up</button></Link></li>
   </ul>
 )
 
