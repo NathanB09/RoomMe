@@ -74,18 +74,29 @@ class EditProfile extends Component {
       smoke } = this.state
     const user = this.props.firebase.auth.currentUser
 
-    fileName && this.props.firebase.upload(fileSelect, fileName, metadata)
-      .then(snapshot => snapshot.ref.getDownloadURL())
-      .then(profile_img => {
-        this.props.firebase
-          .user(user.uid)
-          .update({ budgetMin, budgetMax, drink, drugs, smoke, profile_img })
-      })
-      .then(() => {
-        this.setState({ ...INITIAL_STATE })
-        this.props.history.push(ROUTES.PROFILE)
-      })
-      .catch(error => this.setState({ error }))
+    if (fileName) {
+      this.props.firebase.upload(fileSelect, fileName, metadata)
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(profile_img => {
+          this.props.firebase
+            .user(user.uid)
+            .update({ budgetMin, budgetMax, drink, drugs, smoke, profile_img })
+        })
+        .then(() => {
+          this.setState({ ...INITIAL_STATE })
+          this.props.history.push(ROUTES.PROFILE)
+        })
+        .catch(error => this.setState({ error }))
+    } else {
+      this.props.firebase
+        .user(user.uid)
+        .update({ budgetMin, budgetMax, drink, drugs, smoke })
+        .then(() => {
+          this.setState({ ...INITIAL_STATE })
+          this.props.history.push(ROUTES.PROFILE)
+        })
+        .catch(error => this.setState({ error }))
+    }
   }
 
   render() {
