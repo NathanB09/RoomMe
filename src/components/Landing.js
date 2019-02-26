@@ -1,10 +1,11 @@
 import React from 'react';
+import '../css/Landing.css'
 
 const Landing = () => {
   return (
-    <div>
-      in landing
-    </div>
+    <main className="landing_page">
+      <img src="./landing_logo.svg" alt="roomie logo" />
+    </main>
   );
 };
 
