@@ -1,6 +1,7 @@
 import React from 'react';
 import { withAuthorization } from '../session';
 import Roomie from './Roomie';
+import '../css/RoomieList.css'
 
 class RoomieList extends React.Component {
 
@@ -14,7 +15,9 @@ class RoomieList extends React.Component {
       const user = snapshot.val()[userId]
       Object.values(snapshot.val()).forEach(roomie => {
         if (user.email !== roomie.email &&
-          (user.drink !== 'no' && roomie.drink !== 'no')
+          (user.drink === roomie.drink ||
+            user.drugs === roomie.drugs ||
+            user.smoke === roomie.smoke)
         ) {
           this.setState({ roomies: [...this.state.roomies, roomie] })
         }
@@ -29,6 +32,9 @@ class RoomieList extends React.Component {
   render() {
     return (
       <div>
+        <div className='roomie_banner_wrapper'>
+          <img src={require('../images/roomme_logo.svg')} alt="roomie logo" />
+        </div>
         {this.state.roomies.map(roomie => <Roomie key={roomie.email} roomie={roomie} />)}
       </div>
     );

@@ -1,0 +1,23 @@
+.roomie_banner_wrapper {  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
+  background: url('../images/roomie_banner.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  height: 30vh;
+  z-index: -2;
+}
+
+.roomie_banner_wrapper:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: -1;
+}
