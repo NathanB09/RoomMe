@@ -1,6 +1,9 @@
-html, body, div {
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100vh;
   color: #2D2D2D;
+  font-family: 'Montserrat', sans-serif;
 }
