@@ -13,8 +13,8 @@ const LoginPage = () => (
         <p>Don't have an account? <Link to={ROUTES.SIGNUP}>Sign Up</Link></p>
       </div>
     </div>
-    <div>
-      <img src="./landing_logo.svg" alt="roomie logo" />
+    <div className="logo_wrapper logo_login">
+      <img src={require("../images/landing_logo.svg")} alt="roomie logo" />
     </div>
   </div >
 )
