@@ -2,6 +2,7 @@ import React from 'react';
 import { withAuthorization } from '../session';
 import API from '../constants/API';
 import Property from './Property'
+import '../css/PropertyList.css'
 
 class PropertyList extends React.Component {
 
@@ -45,6 +46,9 @@ class PropertyList extends React.Component {
     const { properties, pageNo } = this.state
     return (
       <div>
+        <div className='property_banner_wrapper'>
+          <img src={require('../images/roomme_logo.svg')} alt="roomie logo" />
+        </div>
         <div>
           {properties &&
             <button

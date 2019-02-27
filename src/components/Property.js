@@ -8,6 +8,7 @@ const Property = ({ listing }) => {
       <p>Bedrooms {listing.bedroom_number}</p>
       <p>Bathrooms {listing.bathroom_number}</p>
       <p>{listing.title}</p>
+      <a href={listing.lister_url} target='blank'>more info</a>
     </div>
   );
 };
