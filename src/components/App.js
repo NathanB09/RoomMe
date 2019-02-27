@@ -12,12 +12,13 @@ import { withAuthentication } from '../session';
 import EditProfile from './EditProfile';
 import PropertyList from './PropertyList';
 import RoomieList from './RoomieList';
+import Aux from '../hoc/Aux'
 
 const App = () => {
   return (
     <div className="App">
       <Router>
-        <div>
+        <Aux>
           <Nav />
 
           <Route exact path={ROUTES.LANDING} component={Landing} />
@@ -28,7 +29,7 @@ const App = () => {
           <Route path={ROUTES.EDIT_PROFILE} component={EditProfile} />
           <Route path={ROUTES.PROPERTIES} component={PropertyList} />
           <Route path={ROUTES.ROOMIES} component={RoomieList} />
-        </div>
+        </Aux>
       </Router>
     </div>
   )
