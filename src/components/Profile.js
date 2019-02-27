@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withAuthorization } from '../session';
 import { Link } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
+import '../css/Profile.css'
 
 class Profile extends Component {
 
@@ -39,15 +40,18 @@ class Profile extends Component {
       smoke,
       profile_img } = this.state
     return (
-      <div>
-        <h1>Profile</h1>
+      <div className='profile_wrapper'>
+        <div className='profile_banner_wrapper'>
+          <Link to={ROUTES.EDIT_PROFILE}>
+            <button><i class="fas fa-pencil-alt"></i> Edit</button>
+          </Link>
+        </div>
         <img src={profile_img} alt="" />
         <h2>{username}</h2>
         <p>Budget: £{budgetMin} - £{budgetMax}</p>
         <p>Drinks: {drink}</p>
         <p>Drugs: {drugs}</p>
         <p>Smokes: {smoke}</p>
-        <Link to={ROUTES.EDIT_PROFILE}><button>Edit Profile</button></Link>
       </div >
     );
   }
