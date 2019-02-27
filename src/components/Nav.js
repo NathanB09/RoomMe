@@ -15,7 +15,7 @@ const NavUnauthorized = () => (
   <ul>
     <li className="logo">
       <Link to={ROUTES.LANDING}>
-        <img src="./nav_logo.svg" alt="nav logo" />
+        <img src={require("../images/nav_logo.svg")} alt="nav logo" />
       </Link>
     </li>
     <li><Link className="nav_link" to={ROUTES.LOGIN}>Login</Link></li>
@@ -31,7 +31,7 @@ const NavAuthorized = () => (
   <ul>
     <li className="logo">
       <Link to={ROUTES.LANDING}>
-        <img src="./nav_logo.svg" alt="nav logo" />
+        <img src={require("../images/nav_logo.svg")} alt="nav logo" />
       </Link>
     </li>
     <li><Link className="nav_link" to={ROUTES.PROPERTIES}>Properties</Link></li>
