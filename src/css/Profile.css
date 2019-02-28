@@ -7,7 +7,7 @@
   background-size: cover;
   position: relative;
   height: 30vh;
-  z-index: -2;
+  border-bottom: 3px solid #599CFF;
 }
 
 .profile_banner_wrapper:after {
@@ -19,7 +19,11 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: -1;
+}
+
+.profile_banner_wrapper a {
+  position: relative;
+  z-index: 10;
 }
 
 .profile_banner_wrapper button {
@@ -35,3 +39,56 @@
   font-size: 15px;
   font-family: 'Montserrat', sans-serif;
 }
+
+.profile_content_area {
+  position: relative;
+}
+
+.profile_img_wrapper {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.profile_img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.profile_img_wrapper:after {
+  content: '';
+  display: block;
+  position: absolute;
+  background-image: linear-gradient(to bottom, #599CFF 0%, #599CFF 50%, #fff 50%);
+  height: 158px;
+  width: 158px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.profile_content_description {
+  padding-top: 65px;
+  padding: 65px 200px 0 200px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preference_card_wrapper {
+  width: 350px;
+}
+
+/* .preference_card {
+
+} */

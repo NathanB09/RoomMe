@@ -43,15 +43,30 @@ class Profile extends Component {
       <div className='profile_wrapper'>
         <div className='profile_banner_wrapper'>
           <Link to={ROUTES.EDIT_PROFILE}>
-            <button><i class="fas fa-pencil-alt"></i> Edit</button>
+            <button><i className="fas fa-pencil-alt"></i> Edit</button>
           </Link>
         </div>
-        <img src={profile_img} alt="" />
-        <h2>{username}</h2>
-        <p>Budget: £{budgetMin} - £{budgetMax}</p>
-        <p>Drinks: {drink}</p>
-        <p>Drugs: {drugs}</p>
-        <p>Smokes: {smoke}</p>
+        <div className="profile_content_area">
+          <div className="profile_img_wrapper">
+            <img className='profile_img' src={profile_img} alt="" />
+          </div>
+          <div className="profile_content_description">
+            <div className='preference_card_wrapper'>
+              <p className='preference_card'>Budget: £{budgetMin} - £{budgetMax}</p>
+              <p className='preference_card'>Drinks: {drink}</p>
+            </div>
+            <div>
+              <h2>{username}</h2>
+            </div>
+            <div className='preference_card_wrapper'>
+              <p className='preference_card'>Drugs: {drugs}</p>
+              <p className='preference_card'>Smokes: {smoke}</p>
+            </div>
+          </div>
+          <div>
+            Saved Properties
+          </div>
+        </div>
       </div >
     );
   }
