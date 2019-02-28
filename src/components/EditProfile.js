@@ -101,6 +101,7 @@ class EditProfile extends Component {
 
   render() {
     const { fileName, budgetMin, budgetMax, drink, drugs, smoke, error } = this.state
+    // const userId = this.props.firebase.auth.currentUser.uid
     return (
       <form onSubmit={this.handleSubmit}>
         {fileName && <img id="preview" src="#" alt="your preview" />}
