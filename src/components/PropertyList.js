@@ -49,25 +49,28 @@ class PropertyList extends React.Component {
         <div className='property_banner_wrapper'>
           <img src={require('../images/roomme_logo.svg')} alt="roomie logo" />
         </div>
-        <div>
+        <div className="page_buttons">
+          {properties &&
+            <p>Page {properties.response.page} of {properties.response.total_pages}</p>
+          }
           {properties &&
             <button
               onClick={this.prevPage}
               disabled={pageNo === 1 ? true : false}>
-              prev page
-            </button>}
+              <i className="fas fa-angle-left"></i>
+            </button>
+          }
           {properties &&
             <button
               onClick={this.nextPage}
               disabled={pageNo === properties.response.total_pages ? true : false}>
-              next page
-            </button>}
-          {properties &&
-            <p>Page {properties.response.page} of {properties.response.total_pages}</p>
+              <i className="fas fa-angle-right"></i>
+            </button>
           }
+
         </div>
-        <div>
-          {properties && properties.response.listings.map(listing => <Property key={listing.lister_url} listing={listing} />)}
+        <div className='properties_wrapper'>
+          {properties && properties.response.listings.map(listing => <Property key={listing.lister_url} listing={listing} firebase={this.props.firebase} />)}
         </div>
       </div>
     );
