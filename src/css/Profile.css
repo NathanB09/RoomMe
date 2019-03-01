@@ -86,9 +86,21 @@
 }
 
 .preference_card_wrapper {
-  width: 350px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 100px;
 }
 
-/* .preference_card {
-
-} */
+.preference_card {
+  background-color: #ddd;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 6px;
+  border: 1px solid #000;
+  padding: 0 20px;
+  margin: 5px 0;
+}
