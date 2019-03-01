@@ -46,7 +46,7 @@ class SignUpFormBase extends Component {
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE })
-        this.props.history.push(ROUTES.PROFILE)
+        this.props.history.push(ROUTES.USER_PROFILE)
       })
       .catch(error => this.setState({ error }))
   }
@@ -102,7 +102,7 @@ class SignUpFormBase extends Component {
         /><br />
         <button disabled={isInvalid} type='submit'>Sign Up</button>
 
-        {error && <p>{error.message}</p>}
+        {error && <div className="error_message">{error.message}</div>}
       </form>
     );
   }

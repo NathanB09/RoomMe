@@ -36,7 +36,7 @@ const NavAuthorized = () => (
     </li>
     <li><Link className="nav_link" to={ROUTES.PROPERTIES}>Properties</Link></li>
     <li><Link className="nav_link" to={ROUTES.ROOMIES}>Roomies</Link></li>
-    <li><Link className="nav_link" to={ROUTES.PROFILE}>Profile</Link></li>
+    <li><Link className="nav_link" to={ROUTES.USER_PROFILE}>Profile</Link></li>
     <li><LogoutBtn /></li>
   </ul>
 )

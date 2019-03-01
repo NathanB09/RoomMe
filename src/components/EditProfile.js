@@ -40,7 +40,7 @@ class EditProfile extends Component {
 
   componentWillUnmount() {
     const user = this.props.firebase.auth.currentUser
-    this.props.firebase.user(user.uid).off()
+    user && this.props.firebase.user(user.uid).off()
   }
 
   handleImageChange = (e) => {
@@ -84,7 +84,7 @@ class EditProfile extends Component {
         })
         .then(() => {
           this.setState({ ...INITIAL_STATE })
-          this.props.history.push(ROUTES.PROFILE)
+          this.props.history.push(ROUTES.USER_PROFILE)
         })
         .catch(error => this.setState({ error }))
     } else {
@@ -93,7 +93,7 @@ class EditProfile extends Component {
         .update({ budgetMin, budgetMax, drink, drugs, smoke })
         .then(() => {
           this.setState({ ...INITIAL_STATE })
-          this.props.history.push(ROUTES.PROFILE)
+          this.props.history.push(ROUTES.USER_PROFILE)
         })
         .catch(error => this.setState({ error }))
     }

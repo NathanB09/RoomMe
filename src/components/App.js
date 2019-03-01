@@ -7,7 +7,7 @@ import Landing from './Landing';
 import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
-import Profile from './Profile';
+import UserProfile from './UserProfile';
 import { withAuthentication } from '../session';
 import EditProfile from './EditProfile';
 import PropertyList from './PropertyList';
@@ -25,7 +25,7 @@ const App = () => {
           <Route path={ROUTES.HOME} component={Home} />
           <Route path={ROUTES.LOGIN} component={Login} />
           <Route path={ROUTES.SIGNUP} component={SignUp} />
-          <Route path={ROUTES.PROFILE} component={Profile} />
+          <Route path={ROUTES.USER_PROFILE} component={UserProfile} />
           <Route path={ROUTES.EDIT_PROFILE} component={EditProfile} />
           <Route path={ROUTES.PROPERTIES} component={PropertyList} />
           <Route path={ROUTES.ROOMIES} component={RoomieList} />

@@ -39,7 +39,7 @@ class LoginFormBase extends Component {
     this.props.firebase.handleLogin(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE })
-        this.props.history.push(ROUTES.PROFILE)
+        this.props.history.push(ROUTES.USER_PROFILE)
       })
       .catch(error => this.setState({ error }))
   }
@@ -69,7 +69,7 @@ class LoginFormBase extends Component {
           value={password}
         /><br />
         <button disabled={isInvalid} type='submit'>Login</button>
-        {error && <p>{error.message}</p>}
+        {error && <div className="error_message">{error.message}</div>}
       </form >
     )
   }
