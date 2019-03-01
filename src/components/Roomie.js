@@ -2,13 +2,29 @@ import React from 'react';
 
 const Roomie = ({ roomie }) => {
   return (
-    <div>
-      <img className="roomie_pic" src={roomie.profile_img} alt="roomie pic" />
-      <h2>{roomie.username}</h2>
-      <p>Budget: £{roomie.budgetMin} - £{roomie.budgetMax} pcm</p>
-      <p>Drinks: {roomie.drink}</p>
-      <p>Drugs: {roomie.drugs}</p>
-      <p>Smoke: {roomie.smoke}</p>
+    <div className="roomie_card">
+      <div className="roomie_pic_wrapper">
+        <img src={roomie.profile_img} alt="roomie pic" />
+        <h2>{roomie.username}</h2>
+      </div>
+      <div className="roomie_details_wrapper">
+        <p>
+          <i className="fas fa-coins"></i>
+          £{roomie.budgetMin} - £{roomie.budgetMax} pcm
+        </p>
+        <p>
+          <i className="fas fa-cocktail"></i>
+          Drinks: {roomie.drink}
+        </p>
+        <p>
+          <i className="fas fa-pills"></i>
+          Drugs: {roomie.drugs}
+        </p>
+        <p>
+          <i className="fas fa-smoking"></i>
+          Smoke: {roomie.smoke}
+        </p>
+      </div>
     </div>
   );
 };

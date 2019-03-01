@@ -21,3 +21,53 @@
   background-color: rgba(255, 255, 255, 0.3);
   z-index: -1;
 }
+
+.roomie_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* margin: 0 500px; */
+}
+
+.roomie_card {
+  background-color: #ddd;
+  border: 2px solid #2d2d2d;
+  border-radius: 10px;
+  width: 200px;
+  overflow: hidden;
+  margin: 20px 0;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: 0.3s;
+}
+
+.roomie_card:hover {
+  box-shadow: 0 9px 18px rgba(0,0,0,0.16), 0 9px 18px rgba(0,0,0,0.23);
+}
+
+.roomie_pic_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+  background-color: #2d2d2d;
+  color: #599CFF;
+}
+
+.roomie_pic_wrapper img {
+  border-radius: 50%;
+  border: 2px solid #599CFF;
+  height: 100px;
+  width: 100px;
+}
+
+.roomie_details_wrapper i {
+  margin: 0 10px;
+}
+
+.roomie_page_heading {
+  text-align: center;
+  font-family: 'Merienda One', cursive;
+  font-size: 20px;
+}
