@@ -49,6 +49,9 @@ class PropertyList extends React.Component {
         <div className='property_banner_wrapper'>
           <img src={require('../images/roomme_logo.svg')} alt="roomie logo" />
         </div>
+        <div className="property_page_heading">
+          <h1>Properties</h1>
+        </div>
         <div className="page_buttons">
           {properties &&
             <p>Page {properties.response.page} of {properties.response.total_pages}</p>
@@ -70,7 +73,7 @@ class PropertyList extends React.Component {
 
         </div>
         <div className='properties_wrapper'>
-          {properties && properties.response.listings.map(listing => <Property key={listing.lister_url} listing={listing} firebase={this.props.firebase} />)}
+          {properties && properties.response.listings.map(listing => <Property key={listing.lister_url} listing={listing} firebase={this.props.firebase} saveDelete={"Save"} />)}
         </div>
       </div>
     );

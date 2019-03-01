@@ -17,7 +17,9 @@ class RoomieList extends React.Component {
         if (user.email !== roomie.email &&
           (user.drink === roomie.drink ||
             user.drugs === roomie.drugs ||
-            user.smoke === roomie.smoke)
+            user.smoke === roomie.smoke) &&
+          (parseInt(user.budgetMax) <= parseInt(roomie.budgetMax) &&
+            parseInt(user.budgetMax) >= parseInt(roomie.budgetMin))
         ) {
           this.setState({ roomies: [...this.state.roomies, roomie] })
         }
@@ -35,7 +37,12 @@ class RoomieList extends React.Component {
         <div className='roomie_banner_wrapper'>
           <img src={require('../images/roomme_logo.svg')} alt="roomie logo" />
         </div>
-        {this.state.roomies.map(roomie => <Roomie key={roomie.email} roomie={roomie} />)}
+        <div className="roomie_page_heading">
+          <h1>Roomies</h1>
+        </div>
+        <div className="roomie_wrapper">
+          {this.state.roomies.map(roomie => <Roomie key={roomie.email} roomie={roomie} />)}
+        </div>
       </div>
     );
   }
