@@ -36,6 +36,11 @@ class Property extends React.Component {
     })
   }
 
+  deleteProperty = (e) => {
+    e.preventDefault()
+    console.log("deleted")
+  }
+
   hashedString = (s) => {
     return s.split("").reduce((a, b) => {
       a = ((a << 5) - a) + b.charCodeAt(0)
@@ -44,13 +49,13 @@ class Property extends React.Component {
   }
 
   componentWillUnmount() {
-    const userId = this.props.firebase.auth.currentUser.uid
-    this.props.firebase.user(userId).off()
+    const user = this.props.firebase.auth.currentUser
+    user && this.props.firebase.user(user.uid).off()
   }
 
 
   render() {
-    const { listing } = this.props
+    const { listing, saveDelete } = this.props
     return (
       <a className="property_card" href={listing.lister_url} target='blank'>
         <div className='card_img'>
@@ -66,7 +71,10 @@ class Property extends React.Component {
             <p><i className="fas fa-map-marker-alt"></i> {this.convertTitle()}</p>
           </div>
           <div className="property_btn_wrapper">
-            <button onClick={this.saveProperty}>Save</button>
+            {saveDelete === 'Save'
+              ? <button onClick={this.saveProperty}>Save</button>
+              : <button onClick={this.deleteProperty}>Delete</button>
+            }
           </div>
         </div>
       </a>
