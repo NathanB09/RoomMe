@@ -39,6 +39,7 @@
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .roomie_card:hover {
@@ -60,6 +61,10 @@
   border: 2px solid #599CFF;
   height: 100px;
   width: 100px;
+}
+
+.roomie_details_wrapper {
+  color: #2d2d2d;
 }
 
 .roomie_details_wrapper i {

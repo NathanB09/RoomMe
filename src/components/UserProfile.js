@@ -5,7 +5,7 @@ import * as ROUTES from '../constants/routes'
 import '../css/Profile.css'
 import Property from './Property';
 
-class Profile extends Component {
+class UserProfile extends Component {
 
   state = {
     username: '',
@@ -91,4 +91,4 @@ class Profile extends Component {
 
 const condition = authUser => !!authUser
 
-export default withAuthorization(condition)(Profile);
+export default withAuthorization(condition)(UserProfile);

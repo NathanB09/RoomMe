@@ -21,10 +21,10 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.profile_banner_wrapper a {
+/* .profile_banner_wrapper a {
   position: relative;
   z-index: 10;
-}
+} */
 
 .profile_banner_wrapper button {
   border-radius: 15px;
@@ -38,6 +38,8 @@
   box-shadow: 0 5px 20px #242424;
   font-size: 15px;
   font-family: 'Montserrat', sans-serif;
+  position: relative;
+  z-index: 10;
 }
 
 .profile_content_area {
@@ -86,7 +88,7 @@
 }
 
 .preference_card_wrapper {
-  width: 200px;
+  width: 210px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
