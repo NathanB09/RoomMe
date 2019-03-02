@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const Roomie = ({ roomie }) => {
   return (
-    <div className="roomie_card">
+    <Link to={`/roomies/${roomie.username}`} className="roomie_card">
       <div className="roomie_pic_wrapper">
         <img src={roomie.profile_img} alt="roomie pic" />
         <h2>{roomie.username}</h2>
@@ -25,7 +26,7 @@ const Roomie = ({ roomie }) => {
           Smoke: {roomie.smoke}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

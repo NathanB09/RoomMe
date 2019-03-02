@@ -13,6 +13,7 @@ import EditProfile from './EditProfile';
 import PropertyList from './PropertyList';
 import RoomieList from './RoomieList';
 import Aux from '../hoc/Aux'
+import RoomieProfile from './RoomieProfile';
 
 const App = () => {
   return (
@@ -28,7 +29,8 @@ const App = () => {
           <Route path={ROUTES.USER_PROFILE} component={UserProfile} />
           <Route path={ROUTES.EDIT_PROFILE} component={EditProfile} />
           <Route path={ROUTES.PROPERTIES} component={PropertyList} />
-          <Route path={ROUTES.ROOMIES} component={RoomieList} />
+          <Route exact path={ROUTES.ROOMIES} component={RoomieList} />
+          <Route path={ROUTES.ROOMIE_PROFILE} component={RoomieProfile} />
         </Aux>
       </Router>
     </div>

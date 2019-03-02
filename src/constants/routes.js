@@ -6,3 +6,4 @@ export const USER_PROFILE = '/my_profile';
 export const EDIT_PROFILE = '/edit_profile';
 export const PROPERTIES = '/properties';
 export const ROOMIES = '/roomies';
+export const ROOMIE_PROFILE = '/roomies/:username'
