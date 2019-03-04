@@ -33,6 +33,10 @@ class UserProfile extends Component {
       }))
   }
 
+  componentWillUnmount() {
+    const user = this.props.firebase.auth.currentUser
+    user && this.props.firebase.user(user.uid).off()
+  }
 
   render() {
     const { username,
