@@ -20,25 +20,34 @@ class Property extends React.Component {
     const userId = this.props.firebase.auth.currentUser.uid
     const newProperty = this.props.listing
     const newPropertyId = this.hashedString(newProperty.lister_url)
+    newProperty.id = newPropertyId
 
     this.props.firebase.user(userId).on('value', snapshot => {
       let newProperties = {}
       if (snapshot.val().savedProperties) {
         newProperties = snapshot.val().savedProperties
         if (!(Object.keys(newProperties).includes(newPropertyId))) {
-          newProperties[newPropertyId] = newProperty
-          this.props.firebase.user(userId).update({ savedProperties: newProperties })
+          this.updateProperties(newProperties, newProperty, userId)
+          // newProperties[newPropertyId] = newProperty
+          // this.props.firebase.user(userId).update({ savedProperties: newProperties })
         }
       } else {
-        newProperties[newPropertyId] = newProperty
-        this.props.firebase.user(userId).update({ savedProperties: newProperties })
+        this.updateProperties(newProperties, newProperty, userId)
+        // newProperties[newPropertyId] = newProperty
+        // this.props.firebase.user(userId).update({ savedProperties: newProperties })
       }
     })
   }
 
+  updateProperties = (properties, listing, userId) => {
+    properties[listing.id] = listing
+    this.props.firebase.user(userId).update({ savedProperties: properties })
+  }
+
   deleteProperty = (e) => {
     e.preventDefault()
-    console.log("deleted")
+    const userId = this.props.firebase.auth.currentUser.uid
+    this.props.firebase.user(userId).child('savedProperties').child(this.props.listing.id).remove()
   }
 
   hashedString = (s) => {
