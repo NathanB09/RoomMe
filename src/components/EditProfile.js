@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withAuthorization } from '../session';
 import * as ROUTES from '../constants/routes'
+import '../css/EditProfile.css'
 
 const INITIAL_STATE = {
   fileSelect: null,
@@ -103,44 +104,64 @@ class EditProfile extends Component {
     const { fileName, budgetMin, budgetMax, drink, drugs, smoke, error } = this.state
     // const userId = this.props.firebase.auth.currentUser.uid
     return (
-      <form onSubmit={this.handleSubmit}>
-        {fileName && <img id="preview" src="#" alt="your preview" />}
-        <input
-          onChange={this.handleImageChange}
-          type="file"
-          accept="image/*" />
-        <input
-          onChange={this.handlePreferenceChange}
-          type="text"
-          name="budgetMin"
-          placeholder="Budget min"
-          value={budgetMin} />
-        <input
-          onChange={this.handlePreferenceChange}
-          type="text"
-          name="budgetMax"
-          placeholder="Budget max"
-          value={budgetMax} />
-        <select onChange={this.handlePreferenceChange} name="drink">
-          <option defaultValue>{drink}</option>
-          <option value="no">No</option>
-          <option value="socially">Socially</option>
-        </select>
-        <select onChange={this.handlePreferenceChange} name="drugs">
-          <option defaultValue>{drugs}</option>
-          <option value="no">No</option>
-          <option value="sometimes">Sometimes</option>
-          <option value="often">Often</option>
-        </select>
-        <select onChange={this.handlePreferenceChange} name="smoke">
-          <option defaultValue>{smoke}</option>
-          <option value="no">No</option>
-          <option value="sometimes">Sometimes</option>
-          <option value="often">Often</option>
-        </select>
-        <input type="submit" value="Save" />
-        {error && <p>{error.message}</p>}
-      </form >
+      <div className='edit_form'>
+        <form onSubmit={this.handleSubmit}>
+          <div className="preview_img_wrapper">
+            {fileName && <img id="preview" src="#" alt="your preview" />}
+          </div>
+          <input
+            className="image_input"
+            onChange={this.handleImageChange}
+            type="file"
+            accept="image/*" />
+          <div className="budget_input_wrapper">
+            Budget:
+            <input
+              onChange={this.handlePreferenceChange}
+              type="text"
+              name="budgetMin"
+              placeholder="Budget min"
+              value={budgetMin} />
+            <input
+              onChange={this.handlePreferenceChange}
+              type="text"
+              name="budgetMax"
+              placeholder="Budget max"
+              value={budgetMax} />
+          </div>
+          <div className="preferences_select_wrapper">
+            <div>
+              Drink?:
+              <select onChange={this.handlePreferenceChange} name="drink">
+                <option defaultValue>{drink}</option>
+                <option value="no">No</option>
+                <option value="socially">Socially</option>
+                <option value="often">Often</option>
+              </select>
+            </div>
+            <div>
+              Drugs?:
+              <select onChange={this.handlePreferenceChange} name="drugs">
+                <option defaultValue>{drugs}</option>
+                <option value="no">No</option>
+                <option value="sometimes">Sometimes</option>
+                <option value="often">Often</option>
+              </select>
+            </div>
+            <div>
+              Smoke?:
+              <select onChange={this.handlePreferenceChange} name="smoke">
+                <option defaultValue>{smoke}</option>
+                <option value="no">No</option>
+                <option value="sometimes">Sometimes</option>
+                <option value="often">Often</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit">Save</button>
+          {error && <p>{error.message}</p>}
+        </form >
+      </div>
     );
   }
 };

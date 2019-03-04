@@ -1,0 +1,52 @@
+.edit_form {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.edit_form form {
+  border: 1px solid #2d2d2d;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.image_input {
+  /* width: 160px; */
+}
+
+.budget_input_wrapper {
+  width: 160px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit_form input, .edit_form select, .edit_form button {
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif; 
+  outline: none;
+  /* margin: 5px; */
+  /* border: none; */
+  /* border-bottom: 1px solid #2d2d2d; */
+}
+
+.edit_form .budget_input_wrapper input {
+  width: 70px;
+}
+
+.edit_form select {
+  width: 160px;
+}
+
+.preferences_select_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview_img_wrapper img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
