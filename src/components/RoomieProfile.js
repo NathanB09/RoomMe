@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { withAuthorization } from '../session';
 import '../css/Profile.css'
 import Property from './Property';
+import MessageBox from './MessageBox';
 
 class RoomieProfile extends Component {
 
   state = {
     username: '',
+    id: '',
     budgetMin: '',
     budgetMax: '',
     drink: '',
@@ -23,6 +25,7 @@ class RoomieProfile extends Component {
           if (roomie.username === this.props.match.params.username) {
             this.setState({
               username: roomie.username,
+              id: roomie.id,
               budgetMin: roomie.budgetMin,
               budgetMax: roomie.budgetMax,
               drink: roomie.drink,
@@ -40,9 +43,9 @@ class RoomieProfile extends Component {
     this.props.firebase.users().off()
   }
 
-
   render() {
     const { username,
+      id,
       budgetMin,
       budgetMax,
       drink,
@@ -88,6 +91,7 @@ class RoomieProfile extends Component {
           <div className='properties_wrapper'>
             {savedProperties && Object.values(savedProperties).map(listing => <Property key={listing.lister_url} listing={listing} firebase={this.props.firebase} saveDelete={"Save"} />)}
           </div>
+          <MessageBox roomieID={id} />
         </div>
       </div >
     );
