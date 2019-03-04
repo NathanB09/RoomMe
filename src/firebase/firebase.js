@@ -35,6 +35,8 @@ class Firebase {
 
   users = () => this.db.ref('users')
 
+  chat = cid => this.db.ref(`chats/${cid}`)
+
   // Storage API
   upload = (file, name, metadata) => this.store.ref().child(name).put(file, metadata)
 
