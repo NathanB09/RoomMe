@@ -18,8 +18,8 @@ class RoomieList extends React.Component {
           (user.drink === roomie.drink ||
             user.drugs === roomie.drugs ||
             user.smoke === roomie.smoke) &&
-          (parseInt(user.budgetMax) <= parseInt(roomie.budgetMax) &&
-            parseInt(user.budgetMax) >= parseInt(roomie.budgetMin))
+          (parseInt(user.budgetMax) >= parseInt(roomie.budgetMin) &&
+            parseInt(user.budgetMin) <= parseInt(roomie.budgetMax))
         ) {
           this.setState({ roomies: [...this.state.roomies, roomie] })
         }
