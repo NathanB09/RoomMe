@@ -38,20 +38,23 @@ class MessageBox extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const { firebase, roomieID } = this.props
-    const userID = this.props.firebase.auth.currentUser.uid
-    const messageID = Math.random().toString(36).substr(2, 16)
-    firebase.chat(this.chatID(userID, roomieID))
-      .update({
-        [messageID]: {
-          messageText: this.state.newMessage,
-          receiverId: roomieID,
-          senderId: userID,
-          timestamp: + new Date()
-        }
-      })
 
-    e.target.reset()
+    if (this.state.newMessage && this.state.newMessage.replace(/\s+/g, '') !== '') {
+      const { firebase, roomieID } = this.props
+      const userID = this.props.firebase.auth.currentUser.uid
+      const messageID = Math.random().toString(36).substr(2, 16)
+      firebase.chat(this.chatID(userID, roomieID))
+        .update({
+          [messageID]: {
+            messageText: this.state.newMessage,
+            receiverId: roomieID,
+            senderId: userID,
+            timestamp: + new Date()
+          }
+        })
+    }
+
+    this.setState({ newMessage: '' })
   }
 
   chatID = (uid1, uid2) => {
@@ -59,17 +62,19 @@ class MessageBox extends Component {
   }
 
   render() {
+    const { roomieID, roomieUsername, toggleMessageBox, showMessages } = this.props
     return (
-      <div className="message_box_wrapper">
-        <Messages messages={this.state.messages} roomieID={this.props.roomieID} />
+      <div className={"message_box_wrapper" + (showMessages ? " show" : "")}>
+        <div onClick={toggleMessageBox} className="message_bar">{roomieUsername}</div>
+        <Messages messages={this.state.messages} roomieID={roomieID} />
         <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}
             name="newMessage"
             type="text"
-            placeholder="message"
+            placeholder="Message"
             value={this.state.newMessage} />
-          <button type="submit">Send</button>
+          <button type="submit"><i className="fas fa-location-arrow"></i></button>
         </form>
       </div>
     );
