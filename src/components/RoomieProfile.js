@@ -15,7 +15,8 @@ class RoomieProfile extends Component {
     drugs: '',
     smoke: '',
     profile_img: '',
-    savedProperties: {}
+    savedProperties: {},
+    showMessages: false
   }
 
   componentDidMount() {
@@ -43,6 +44,10 @@ class RoomieProfile extends Component {
     this.props.firebase.users().off()
   }
 
+  toggleMessageBox = () => {
+    this.setState({ showMessages: !this.state.showMessages })
+  }
+
   render() {
     const { username,
       id,
@@ -52,11 +57,12 @@ class RoomieProfile extends Component {
       drugs,
       smoke,
       profile_img,
-      savedProperties } = this.state
+      savedProperties,
+      showMessages } = this.state
     return (
       <div className='profile_wrapper'>
         <div className='profile_banner_wrapper'>
-          <button onClick={() => console.log('message')}>Message</button>
+          <button onClick={this.toggleMessageBox}>Message</button>
         </div>
         <div className="profile_content_area">
           <div className="profile_img_wrapper">
@@ -91,7 +97,11 @@ class RoomieProfile extends Component {
           <div className='properties_wrapper'>
             {savedProperties && Object.values(savedProperties).map(listing => <Property key={listing.lister_url} listing={listing} firebase={this.props.firebase} saveDelete={"Save"} />)}
           </div>
-          <MessageBox roomieID={id} />
+          <MessageBox
+            roomieID={id}
+            roomieUsername={username}
+            showMessages={showMessages}
+            toggleMessageBox={this.toggleMessageBox} />
         </div>
       </div >
     );
