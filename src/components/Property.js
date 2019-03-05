@@ -66,27 +66,29 @@ class Property extends React.Component {
   render() {
     const { listing, saveDelete } = this.props
     return (
-      <a className="property_card" href={listing.lister_url} target='blank'>
-        <div className='card_img'>
-          <img src={listing.img_url} alt="property thumbnail" />
-          <p>£{listing.price * 4}</p>
-        </div>
-        <div className="property_card_details">
-          <div className="property_bed_bath">
-            <p><i className="fas fa-bed"></i> {listing.bedroom_number} Bedrooms</p>
-            <p><i className="fas fa-bath"></i> {listing.bathroom_number} Bathrooms</p>
+      <div className={"property_card_wrapper"}>
+        <a className="property_card" href={listing.lister_url} target='blank'>
+          <div className='card_img'>
+            <img src={listing.img_url} alt="property thumbnail" />
+            <p>£{listing.price * 4}</p>
           </div>
-          <div className="property_address">
-            <p><i className="fas fa-map-marker-alt"></i> {this.convertTitle()}</p>
+          <div className="property_card_details">
+            <div className="property_bed_bath">
+              <p><i className="fas fa-bed"></i> {listing.bedroom_number} Bedrooms</p>
+              <p><i className="fas fa-bath"></i> {listing.bathroom_number} Bathrooms</p>
+            </div>
+            <div className="property_address">
+              <p><i className="fas fa-map-marker-alt"></i> {this.convertTitle()}</p>
+            </div>
+            <div className="property_btn_wrapper">
+              {saveDelete === 'Save'
+                ? <button onClick={this.saveProperty}>Save</button>
+                : <button onClick={this.deleteProperty}>Delete</button>
+              }
+            </div>
           </div>
-          <div className="property_btn_wrapper">
-            {saveDelete === 'Save'
-              ? <button onClick={this.saveProperty}>Save</button>
-              : <button onClick={this.deleteProperty}>Delete</button>
-            }
-          </div>
-        </div>
-      </a>
+        </a>
+      </div>
     );
   }
 };

@@ -28,12 +28,30 @@
   justify-content: center;
 }
 
+
+.property_card_wrapper {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.property_card_wrapper:nth-child(even) {
+  justify-content: flex-start;
+}
+/* 
+.property_card_wrapper_right {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+}  */
+
 .property_card {
   cursor: pointer;
   display: flex;
   text-decoration: none;
   width: 90%;
   max-width: 500px;
+  min-width: 500px;
   height: 130px;
   background-color: #ddd;
   border-radius: 10px;
