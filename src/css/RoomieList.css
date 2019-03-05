@@ -25,17 +25,32 @@
 .roomie_wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  /* margin: 0 500px; */
+  justify-content: center;
+}
+
+.roomie_card_wrapper {
+  width: 26%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.roomie_card_wrapper:nth-child(3n+2) {
+  justify-content: center;
+}
+
+.roomie_card_wrapper:nth-child(3n+3) {
+  justify-content: flex-start;
 }
 
 .roomie_card {
   background-color: #ddd;
   border: 2px solid #2d2d2d;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
   width: 200px;
   overflow: hidden;
-  margin: 20px 0;
+  margin: 1em;
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   transition: 0.3s;
