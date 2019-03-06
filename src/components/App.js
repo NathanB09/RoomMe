@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import '../css/App.css';
 import Nav from './Nav';
@@ -9,30 +9,24 @@ import Login from './Login';
 import SignUp from './SignUp';
 import UserProfile from './UserProfile';
 import { withAuthentication } from '../session';
-import EditProfile from './EditProfile';
 import PropertyList from './PropertyList';
 import RoomieList from './RoomieList';
-import Aux from '../hoc/Aux'
 import RoomieProfile from './RoomieProfile';
+import EditProfile from './EditProfile'
 
 const App = () => {
   return (
     <div className="App">
-      <Router>
-        <Aux>
-          <Nav />
-
-          <Route exact path={ROUTES.LANDING} component={Landing} />
-          <Route path={ROUTES.HOME} component={Home} />
-          <Route path={ROUTES.LOGIN} component={Login} />
-          <Route path={ROUTES.SIGNUP} component={SignUp} />
-          <Route path={ROUTES.USER_PROFILE} component={UserProfile} />
-          <Route path={ROUTES.EDIT_PROFILE} component={EditProfile} />
-          <Route path={ROUTES.PROPERTIES} component={PropertyList} />
-          <Route exact path={ROUTES.ROOMIES} component={RoomieList} />
-          <Route path={ROUTES.ROOMIE_PROFILE} component={RoomieProfile} />
-        </Aux>
-      </Router>
+      <Nav />
+      <Route exact path={ROUTES.LANDING} component={Landing} />
+      <Route path={ROUTES.HOME} component={Home} />
+      <Route path={ROUTES.LOGIN} component={Login} />
+      <Route path={ROUTES.SIGNUP} component={SignUp} />
+      <Route exact path={ROUTES.USER_PROFILE} component={UserProfile} />
+      <Route path={ROUTES.EDIT_PROFILE} component={EditProfile} />
+      <Route path={ROUTES.PROPERTIES} component={PropertyList} />
+      <Route exact path={ROUTES.ROOMIES} component={RoomieList} />
+      <Route path={ROUTES.ROOMIE_PROFILE} component={RoomieProfile} />
     </div>
   )
 }
