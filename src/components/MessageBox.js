@@ -27,8 +27,8 @@ class MessageBox extends Component {
 
   componentWillUnmount() {
     const { firebase, roomieID } = this.props
-    const userID = this.props.firebase.auth.currentUser.uid
-    firebase.chat(this.chatID(userID, roomieID)).off()
+    const user = this.props.firebase.auth.currentUser
+    user && firebase.chat(this.chatID(user.uid, roomieID)).off()
   }
 
 
