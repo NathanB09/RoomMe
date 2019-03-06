@@ -1,6 +1,7 @@
 .landing_page {
   height: inherit;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex: 1 1 auto;
@@ -20,4 +21,12 @@
   height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: -1;
+}
+
+.landing_page p {
+  font-size: 21px;
+  font-weight: bold;
+  text-shadow: 0 0 5px #fff;
+  text-align: center;
+  margin: 30px;
 }
