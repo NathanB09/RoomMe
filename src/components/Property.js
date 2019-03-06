@@ -28,13 +28,9 @@ class Property extends React.Component {
         newProperties = snapshot.val().savedProperties
         if (!(Object.keys(newProperties).includes(newPropertyId))) {
           this.updateProperties(newProperties, newProperty, userId)
-          // newProperties[newPropertyId] = newProperty
-          // this.props.firebase.user(userId).update({ savedProperties: newProperties })
         }
       } else {
         this.updateProperties(newProperties, newProperty, userId)
-        // newProperties[newPropertyId] = newProperty
-        // this.props.firebase.user(userId).update({ savedProperties: newProperties })
       }
     })
   }
