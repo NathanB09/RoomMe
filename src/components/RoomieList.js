@@ -15,9 +15,9 @@ class RoomieList extends React.Component {
       const user = snapshot.val()[userId]
       Object.values(snapshot.val()).forEach(roomie => {
         if (user.email !== roomie.email &&
-          (user.drink === roomie.drink ||
-            user.drugs === roomie.drugs ||
-            user.smoke === roomie.smoke) &&
+          // (user.drink === roomie.drink ||
+          //   user.drugs === roomie.drugs ||
+          //   user.smoke === roomie.smoke) &&
           (parseInt(user.budgetMax) >= parseInt(roomie.budgetMin) &&
             parseInt(user.budgetMin) <= parseInt(roomie.budgetMax))
         ) {

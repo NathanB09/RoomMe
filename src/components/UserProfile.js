@@ -12,13 +12,17 @@ class UserProfile extends Component {
     budgetMin: '',
     budgetMax: '',
     drink: '',
-    drugs: '',
+    profession: '',
     smoke: '',
     profile_img: '',
     savedProperties: {}
   }
 
   componentDidMount() {
+    this.fetchDetails()
+  }
+
+  fetchDetails = () => {
     const user = this.props.firebase.auth.currentUser
     this.props.firebase.user(user.uid)
       .on('value', snapshot => this.setState({
@@ -26,11 +30,12 @@ class UserProfile extends Component {
         budgetMin: snapshot.val().budgetMin,
         budgetMax: snapshot.val().budgetMax,
         drink: snapshot.val().drink,
-        drugs: snapshot.val().drugs,
+        profession: snapshot.val().profession,
         smoke: snapshot.val().smoke,
         profile_img: snapshot.val().profile_img,
-        savedProperties: snapshot.val().savedProperties
+        savedProperties: snapshot.val().savedProperties,
       }))
+
   }
 
   componentWillUnmount() {
@@ -43,7 +48,7 @@ class UserProfile extends Component {
       budgetMin,
       budgetMax,
       drink,
-      drugs,
+      profession,
       smoke,
       profile_img,
       savedProperties } = this.state
@@ -66,7 +71,7 @@ class UserProfile extends Component {
               </div>
               <div className='preference_card'>
                 <i className="fas fa-cocktail"></i>
-                Drinks: {drink}
+                <p>{drink}</p>
               </div>
             </div>
             <div>
@@ -74,12 +79,12 @@ class UserProfile extends Component {
             </div>
             <div className='preference_card_wrapper'>
               <div className='preference_card'>
-                <i className="fas fa-pills"></i>
-                Drugs: {drugs}
+                <i className="fas fa-users"></i>
+                <p>{profession}</p>
               </div>
               <div className='preference_card'>
                 <i className="fas fa-smoking"></i>
-                Smokes: {smoke}
+                <p>{smoke}</p>
               </div>
             </div>
           </div>

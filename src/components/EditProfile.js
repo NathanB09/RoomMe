@@ -10,7 +10,7 @@ const INITIAL_STATE = {
   budgetMin: '',
   budgetMax: '',
   drink: '-',
-  drugs: '-',
+  profession: '-',
   smoke: '-',
   error: null
 }
@@ -28,13 +28,13 @@ class EditProfile extends Component {
         snapshot.val().budgetMin &&
         snapshot.val().budgetMax &&
         snapshot.val().drink &&
-        snapshot.val().drugs &&
+        snapshot.val().profession &&
         snapshot.val().smoke &&
         this.setState({
           budgetMin: snapshot.val().budgetMin,
           budgetMax: snapshot.val().budgetMax,
           drink: snapshot.val().drink,
-          drugs: snapshot.val().drugs,
+          profession: snapshot.val().profession,
           smoke: snapshot.val().smoke
         }))
   }
@@ -58,12 +58,21 @@ class EditProfile extends Component {
     }
   }
 
-  handlePreferenceChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
+  handlePreferenceChange = async (e) => {
+    await this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (parseInt(this.state.budgetMin) > parseInt(this.state.budgetMax)) {
+      await this.setState({
+        budgetMax: this.state.budgetMin,
+        budgetMin: this.state.budgetMax
+      })
+    }
+
+    const user = this.props.firebase.auth.currentUser
     const {
       fileSelect,
       fileName,
@@ -71,9 +80,8 @@ class EditProfile extends Component {
       budgetMax,
       budgetMin,
       drink,
-      drugs,
+      profession,
       smoke } = this.state
-    const user = this.props.firebase.auth.currentUser
 
     if (fileName) {
       this.props.firebase.upload(fileSelect, fileName, metadata)
@@ -81,7 +89,7 @@ class EditProfile extends Component {
         .then(profile_img => {
           this.props.firebase
             .user(user.uid)
-            .update({ budgetMin, budgetMax, drink, drugs, smoke, profile_img })
+            .update({ budgetMin, budgetMax, drink, profession, smoke, profile_img })
         })
         .then(() => {
           this.setState({ ...INITIAL_STATE })
@@ -91,7 +99,7 @@ class EditProfile extends Component {
     } else {
       this.props.firebase
         .user(user.uid)
-        .update({ budgetMin, budgetMax, drink, drugs, smoke })
+        .update({ budgetMin, budgetMax, drink, profession, smoke })
         .then(() => {
           this.setState({ ...INITIAL_STATE })
           this.props.history.push(ROUTES.USER_PROFILE)
@@ -101,64 +109,70 @@ class EditProfile extends Component {
   }
 
   render() {
-    const { fileName, budgetMin, budgetMax, drink, drugs, smoke, error } = this.state
+    const { fileName, budgetMin, budgetMax, drink, profession, smoke, error } = this.state
     // const userId = this.props.firebase.auth.currentUser.uid
     return (
       <div className='edit_form'>
         <form onSubmit={this.handleSubmit}>
-          <div className="preview_img_wrapper">
-            {fileName && <img id="preview" src="#" alt="your preview" />}
+          <div className="edit_form_left">
+            <div className="preview_img_wrapper">
+              {fileName ? <img id="preview" src="#" alt="your preview" /> : <i className="fas fa-user"></i>}
+            </div>
+            <div className="upload_image_wrapper">
+              <input
+                onChange={this.handleImageChange}
+                type="file"
+                accept="image/*" />
+              <button><i className="fas fa-upload"></i> Picture</button>
+            </div>
           </div>
-          <input
-            className="image_input"
-            onChange={this.handleImageChange}
-            type="file"
-            accept="image/*" />
-          <div className="budget_input_wrapper">
-            Budget:
-            <input
-              onChange={this.handlePreferenceChange}
-              type="text"
-              name="budgetMin"
-              placeholder="Budget min"
-              value={budgetMin} />
-            <input
-              onChange={this.handlePreferenceChange}
-              type="text"
-              name="budgetMax"
-              placeholder="Budget max"
-              value={budgetMax} />
-          </div>
-          <div className="preferences_select_wrapper">
-            <div>
-              Drink?:
+          <div className="edit_form_right">
+            <div className="budget_wrapper">
+              <p>Budget:</p>
+              <div className="budget_input_wrapper">
+                <input
+                  onChange={this.handlePreferenceChange}
+                  type="text"
+                  name="budgetMin"
+                  placeholder="Min"
+                  value={budgetMin} />
+                <input
+                  onChange={this.handlePreferenceChange}
+                  type="text"
+                  name="budgetMax"
+                  placeholder="Max"
+                  value={budgetMax} />
+              </div>
+            </div>
+            <div className="preference_wrapper">
+              <p>Drink:</p>
               <select onChange={this.handlePreferenceChange} name="drink">
                 <option defaultValue>{drink}</option>
-                <option value="no">No</option>
-                <option value="socially">Socially</option>
-                <option value="often">Often</option>
+                <option value="No">No</option>
+                <option value="Socially">Socially</option>
+                <option value="Often">Often</option>
               </select>
             </div>
-            <div>
-              Drugs?:
-              <select onChange={this.handlePreferenceChange} name="drugs">
-                <option defaultValue>{drugs}</option>
-                <option value="no">No</option>
-                <option value="sometimes">Sometimes</option>
-                <option value="often">Often</option>
+            <div className="preference_wrapper">
+              <p>Profession:</p>
+              <select onChange={this.handlePreferenceChange} name="profession">
+                <option defaultValue>{profession}</option>
+                <option value="Professional">Professional</option>
+                <option value="Student">Student</option>
+                <option value="Unemployed">Unemployed</option>
               </select>
             </div>
-            <div>
-              Smoke?:
+            <div className="preference_wrapper">
+              <p>Smoke:</p>
               <select onChange={this.handlePreferenceChange} name="smoke">
                 <option defaultValue>{smoke}</option>
-                <option value="no">No</option>
-                <option value="sometimes">Sometimes</option>
-                <option value="often">Often</option>
+                <option value="No">No</option>
+                <option value="Sometimes">Sometimes</option>
+                <option value="Often">Often</option>
               </select>
             </div>
+            <button className="save_btn" type="submit">Save</button>
           </div>
-          <button type="submit">Save</button>
           {error && <p>{error.message}</p>}
         </form >
       </div>

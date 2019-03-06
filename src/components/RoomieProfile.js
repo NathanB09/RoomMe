@@ -12,7 +12,7 @@ class RoomieProfile extends Component {
     budgetMin: '',
     budgetMax: '',
     drink: '',
-    drugs: '',
+    profession: '',
     smoke: '',
     profile_img: '',
     savedProperties: {},
@@ -30,7 +30,7 @@ class RoomieProfile extends Component {
               budgetMin: roomie.budgetMin,
               budgetMax: roomie.budgetMax,
               drink: roomie.drink,
-              drugs: roomie.drugs,
+              profession: roomie.profession,
               smoke: roomie.smoke,
               profile_img: roomie.profile_img,
               savedProperties: roomie.savedProperties
@@ -54,7 +54,7 @@ class RoomieProfile extends Component {
       budgetMin,
       budgetMax,
       drink,
-      drugs,
+      profession,
       smoke,
       profile_img,
       savedProperties,
@@ -76,7 +76,7 @@ class RoomieProfile extends Component {
               </div>
               <div className='preference_card'>
                 <i className="fas fa-cocktail"></i>
-                Drinks: {drink}
+                <p>Drinks: {drink}</p>
               </div>
             </div>
             <div>
@@ -84,12 +84,12 @@ class RoomieProfile extends Component {
             </div>
             <div className='preference_card_wrapper'>
               <div className='preference_card'>
-                <i className="fas fa-pills"></i>
-                Drugs: {drugs}
+                <i className="fas fa-users"></i>
+                <p>{profession}</p>
               </div>
               <div className='preference_card'>
                 <i className="fas fa-smoking"></i>
-                Smokes: {smoke}
+                <p>Smokes: {smoke}</p>
               </div>
             </div>
           </div>

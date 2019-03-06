@@ -19,12 +19,12 @@ const Roomie = ({ roomie }) => {
             Drinks: {roomie.drink}
           </p>
           <p>
-            <i className="fas fa-pills"></i>
-            Drugs: {roomie.drugs}
-          </p>
-          <p>
             <i className="fas fa-smoking"></i>
             Smoke: {roomie.smoke}
+          </p>
+          <p>
+            <i className="fas fa-users"></i>
+            {roomie.profession}
           </p>
         </div>
       </Link>
