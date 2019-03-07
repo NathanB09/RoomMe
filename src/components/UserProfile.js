@@ -43,6 +43,12 @@ class UserProfile extends Component {
     user && this.props.firebase.user(user.uid).off()
   }
 
+  updatePropertyList = (listingId) => {
+    const oldList = Object.values(this.state.savedProperties)
+    const updatedList = oldList.filter(property => property.id !== listingId)
+    this.setState({ savedProperties: updatedList })
+  }
+
   render() {
     const { username,
       budgetMin,
@@ -90,7 +96,15 @@ class UserProfile extends Component {
           </div>
           <h3>Saved Properties</h3>
           <div className='properties_wrapper'>
-            {savedProperties && Object.values(savedProperties).map(listing => <Property key={listing.lister_url} listing={listing} firebase={this.props.firebase} saveDelete={"Delete"} />)}
+            {savedProperties &&
+              Object.values(savedProperties)
+                .map(listing => <Property
+                  key={listing.lister_url}
+                  listing={listing}
+                  firebase={this.props.firebase}
+                  saveDelete={"Delete"}
+                  updatePropertyList={this.updatePropertyList} />)
+            }
           </div>
         </div>
       </div >
