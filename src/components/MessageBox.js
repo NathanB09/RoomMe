@@ -67,7 +67,7 @@ class MessageBox extends Component {
       <div className={"message_box_wrapper" + (showMessages ? " show" : "")}>
         <div onClick={toggleMessageBox} className="message_bar">{roomieUsername}</div>
         <Messages messages={this.state.messages} roomieID={roomieID} />
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} autoComplete="off">
           <input
             onChange={this.handleChange}
             name="newMessage"
