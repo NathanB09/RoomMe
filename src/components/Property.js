@@ -38,8 +38,11 @@ class Property extends React.Component {
   updateProperties = (properties, listing, userId) => {
     properties[listing.id] = listing
     this.props.firebase.user(userId).update({ savedProperties: properties })
-    document.querySelector('.notification_card').classList.add('show')
-    this.popup()
+    const popupCard = document.querySelector('.notification_card').classList
+    if (!popupCard.value.includes('show')) {
+      popupCard.add('show')
+      this.popup()
+    }
   }
 
   popup = () => {
