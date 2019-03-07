@@ -62,7 +62,12 @@ class EditProfile extends Component {
   }
 
   handlePreferenceChange = async (e) => {
-    await this.setState({ [e.target.name]: e.target.value })
+    if (e.target.name === "budgetMin" || e.target.name === "budgetMax") {
+      const budget = e.target.value.replace(/\D/, '')
+      await this.setState({ [e.target.name]: budget })
+    } else {
+      await this.setState({ [e.target.name]: e.target.value })
+    }
   }
 
   handleSubmit = async (e) => {
@@ -113,7 +118,6 @@ class EditProfile extends Component {
 
   render() {
     const { fileName, budgetMin, budgetMax, drink, profession, smoke, profile_img, error } = this.state
-    // const userId = this.props.firebase.auth.currentUser.uid
     return (
       <div className='edit_form'>
         <form onSubmit={this.handleSubmit}>
