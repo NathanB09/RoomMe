@@ -76,7 +76,7 @@ class RoomieProfile extends Component {
               </div>
               <div className='preference_card'>
                 <i className="fas fa-cocktail"></i>
-                <p>Drinks: {drink}</p>
+                <p>{drink}</p>
               </div>
             </div>
             <div>
@@ -89,7 +89,7 @@ class RoomieProfile extends Component {
               </div>
               <div className='preference_card'>
                 <i className="fas fa-smoking"></i>
-                <p>Smokes: {smoke}</p>
+                <p>{smoke}</p>
               </div>
             </div>
           </div>
