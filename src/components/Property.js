@@ -38,12 +38,21 @@ class Property extends React.Component {
   updateProperties = (properties, listing, userId) => {
     properties[listing.id] = listing
     this.props.firebase.user(userId).update({ savedProperties: properties })
+    document.querySelector('.notification_card').classList.add('show')
+    this.popup()
+  }
+
+  popup = () => {
+    setTimeout(() => {
+      document.querySelector('.notification_card').classList.remove('show')
+    }, 2500)
   }
 
   deleteProperty = (e) => {
     e.preventDefault()
     const userId = this.props.firebase.auth.currentUser.uid
     this.props.firebase.user(userId).child('savedProperties').child(this.props.listing.id).remove()
+    this.props.updatePropertyList(this.props.listing.id)
   }
 
   hashedString = (s) => {

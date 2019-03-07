@@ -178,3 +178,23 @@
   font-family: 'Merienda One', cursive;
   font-size: 20px;
 }
+
+.save_notification_wrapper {
+  position: absolute;
+}
+
+.notification_card {
+  background: #599CFF;
+  padding: 5px 40px;
+  border-radius: 10px;
+  margin-top: 100px;
+  left: 0;
+  transform: translate(-100%, 0);
+  position: fixed;
+  transition: 0.4s;
+  z-index: 10;
+}
+
+.notification_card.show {
+  transform: translate(20%, 0);
+}

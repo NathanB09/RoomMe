@@ -46,6 +46,11 @@ class PropertyList extends React.Component {
     const { properties, pageNo } = this.state
     return (
       <div>
+        <div className="save_notification_wrapper">
+          <div className="notification_card">
+            <p><i className="fas fa-home"></i> Property Saved!</p>
+          </div>
+        </div>
         <div className='property_banner_wrapper'>
           <img src={require('../images/roomme_logo.svg')} alt="roomie logo" />
         </div>
