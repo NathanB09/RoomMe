@@ -26,12 +26,22 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.roomie_wrapper:after {
+  content: '';
+  display: block;
+  flex: 1 1 auto;
 }
 
 .roomie_card_wrapper {
-  width: 26%;
+  width: 33.3333333%;
   display: flex;
   justify-content: flex-end;
+  min-width: 300px;
 }
 
 .roomie_card_wrapper:nth-child(3n+2) {

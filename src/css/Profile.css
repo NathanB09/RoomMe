@@ -108,6 +108,10 @@
   min-width: 150px;
 }
 
+.profile_wrapper h3 {
+  text-align: center;
+}
+
 /* .preference_card p {
   color: red;
 } */

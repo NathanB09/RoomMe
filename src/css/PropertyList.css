@@ -28,6 +28,12 @@
   justify-content: center;
 }
 
+.properties_wrapper:after {
+  content: ' ';
+  display: block;
+  flex: 1 1 auto;
+}
+
 
 .property_card_wrapper {
   width: 50%;

@@ -88,7 +88,7 @@ class UserProfile extends Component {
               </div>
             </div>
           </div>
-          <h3 className='properties_wrapper'>Saved Properties</h3>
+          <h3>Saved Properties</h3>
           <div className='properties_wrapper'>
             {savedProperties && Object.values(savedProperties).map(listing => <Property key={listing.lister_url} listing={listing} firebase={this.props.firebase} saveDelete={"Delete"} />)}
           </div>
