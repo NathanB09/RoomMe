@@ -12,6 +12,7 @@ const INITIAL_STATE = {
   drink: '-',
   profession: '-',
   smoke: '-',
+  profile_img: '',
   error: null
 }
 
@@ -30,12 +31,14 @@ class EditProfile extends Component {
         snapshot.val().drink &&
         snapshot.val().profession &&
         snapshot.val().smoke &&
+        snapshot.val().profile_img &&
         this.setState({
           budgetMin: snapshot.val().budgetMin,
           budgetMax: snapshot.val().budgetMax,
           drink: snapshot.val().drink,
           profession: snapshot.val().profession,
-          smoke: snapshot.val().smoke
+          smoke: snapshot.val().smoke,
+          profile_img: snapshot.val().profile_img
         }))
   }
 
@@ -109,14 +112,19 @@ class EditProfile extends Component {
   }
 
   render() {
-    const { fileName, budgetMin, budgetMax, drink, profession, smoke, error } = this.state
+    const { fileName, budgetMin, budgetMax, drink, profession, smoke, profile_img, error } = this.state
     // const userId = this.props.firebase.auth.currentUser.uid
     return (
       <div className='edit_form'>
         <form onSubmit={this.handleSubmit}>
           <div className="edit_form_left">
             <div className="preview_img_wrapper">
-              {fileName ? <img id="preview" src="#" alt="your preview" /> : <i className="fas fa-user"></i>}
+              {fileName
+                ? <img id="preview" src="#" alt="profile pic preview" />
+                : (profile_img
+                  ? <img src={profile_img} alt="profile pic preview" />
+                  : <i className="fas fa-user"></i>)
+              }
             </div>
             <div className="upload_image_wrapper">
               <input
