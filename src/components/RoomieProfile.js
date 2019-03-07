@@ -61,6 +61,11 @@ class RoomieProfile extends Component {
       showMessages } = this.state
     return (
       <div className='profile_wrapper'>
+        <div className="save_notification_wrapper">
+          <div className="notification_card">
+            <p><i className="fas fa-home"></i> Property Saved!</p>
+          </div>
+        </div>
         <div className='profile_banner_wrapper'>
           <button onClick={this.toggleMessageBox}>Message</button>
         </div>
