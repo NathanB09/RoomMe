@@ -47,7 +47,7 @@ class Property extends React.Component {
 
   popup = () => {
     const popupCard = document.querySelector('.notification_card').classList
-    if (!popupCard.value.includes('show')) {
+    if (popupCard.value.includes('show')) {
       setTimeout(() => {
         popupCard.remove('show')
       }, 2500)
