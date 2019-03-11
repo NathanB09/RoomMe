@@ -1,3 +1,5 @@
+!()[https://github.com/NathanB09/RoomMe/blob/master/src/images/landing_logo.svg]
+
 # RoomMe
 
 RoomMe is an app for people to find a roommate in London and look for places to rent that they interested in. Users are matched based on their monthly budget and a few other preferences like smoking and drinking.
