@@ -1,4 +1,6 @@
-![](https://github.com/NathanB09/RoomMe/blob/master/src/images/landing_logo.svg)
+<p align="center">
+  <img src="https://github.com/NathanB09/RoomMe/blob/master/src/images/landing_logo.svg">
+</p>
 
 # RoomMe
 
