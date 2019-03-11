@@ -1,4 +1,4 @@
-!()[https://github.com/NathanB09/RoomMe/blob/master/src/images/landing_logo.svg]
+![](https://github.com/NathanB09/RoomMe/blob/master/src/images/landing_logo.svg)
 
 # RoomMe
 
