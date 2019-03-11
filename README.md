@@ -2,8 +2,6 @@
   <img src="https://github.com/NathanB09/RoomMe/blob/master/src/images/landing_logo.svg">
 </p>
 
-# RoomMe
-
 RoomMe is an app for people to find a roommate in London and look for places to rent that they interested in. Users are matched based on their monthly budget and a few other preferences like smoking and drinking.
 
 RoomMe uses React for the front end and Firebase for the back end and hosting. The Nestoria API is used to fetch rental properties currently on the market in London.
